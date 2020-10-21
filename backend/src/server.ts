@@ -1,16 +1,14 @@
 import express from 'express';
 
+import routes from './routes';
+
 import './database/connection';
 
 const app = express();
 
 app.use(express.json());
 
-app.post('/score', (request, response) => {
-  console.log(request.body);
-
-  response.json(request.body);
-});
+app.use(routes);
 
 app.listen(3333, () => {
   console.log('🚀 Server started! Port: 3333!');
