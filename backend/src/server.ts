@@ -1,11 +1,15 @@
 import express from 'express';
 
+import './database/connection';
+
 const app = express();
 
 app.use(express.json());
 
-app.get('/', (request, response) => {
-  return response.send('api rodando 🚀');
+app.post('/score', (request, response) => {
+  console.log(request.body);
+
+  response.json(request.body);
 });
 
 app.listen(3333, () => {
