@@ -2,7 +2,7 @@ import React, { ButtonHTMLAttributes, PropsWithChildren } from 'react';
 
 import { Container } from './styles';
 
-export type ButtonVariants = 'secondary' | 'transparent';
+export type ButtonVariants = 'primary' | 'transparent';
 
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: ButtonVariants;
