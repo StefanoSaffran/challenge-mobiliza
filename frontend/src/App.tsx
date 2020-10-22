@@ -1,17 +1,20 @@
 import React from 'react';
 
+import { BrowserRouter as Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 import theme from './styles/theme';
 import GlobalStyles from './styles/global';
-import Login from './pages/Login';
+import Routes from './routes';
 import AppProvider from './contexts';
 
 const App = () => (
   <ThemeProvider theme={theme}>
     <AppProvider>
-      <Login />
-      <GlobalStyles />
+      <Router>
+        <Routes />
+        <GlobalStyles />
+      </Router>
     </AppProvider>
   </ThemeProvider>
 );
