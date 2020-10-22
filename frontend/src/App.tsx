@@ -5,14 +5,14 @@ import { ThemeProvider } from 'styled-components';
 import theme from './styles/theme';
 import GlobalStyles from './styles/global';
 import Login from './pages/Login';
-// import AppProvider from './context';
+import AppProvider from './contexts';
 
 const App = () => (
   <ThemeProvider theme={theme}>
-    {/* <AppProvider> */}
-    <Login />
-    <GlobalStyles />
-    {/* </AppProvider> */}
+    <AppProvider>
+      <Login />
+      <GlobalStyles />
+    </AppProvider>
   </ThemeProvider>
 );
 
