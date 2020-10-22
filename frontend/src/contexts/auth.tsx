@@ -11,11 +11,13 @@ import { storageKey } from '~/utils';
 export type AuthState = {
   signed: boolean;
   username: string;
+  answered: boolean;
 };
 
 export type AuthContext = {
   signed: boolean;
   username: string;
+  answered: boolean;
   signIn(name: string): void;
   signOut(): void;
 };
@@ -24,14 +26,15 @@ const AuthContext = createContext<AuthContext | null>(null);
 
 const AuthProvider = ({ children }: PropsWithChildren<unknown>) => {
   const [data, setData] = useState<AuthState>(() => {
-    const storedUser = localStorage.getItem(storageKey('user'));
+    const storedData = localStorage.getItem(storageKey('userData'));
 
-    if (storedUser) {
-      const userName = JSON.parse(storedUser);
+    if (storedData) {
+      const userData = JSON.parse(storedData);
 
       return {
-        signed: true,
-        username: userName,
+        signed: userData.signed,
+        username: userData.username,
+        answered: userData.answered,
       };
     }
 
@@ -39,19 +42,23 @@ const AuthProvider = ({ children }: PropsWithChildren<unknown>) => {
   });
 
   const signIn = useCallback(name => {
-    localStorage.setItem(storageKey('username'), JSON.stringify(name));
-    setData({ signed: true, username: name });
+    localStorage.setItem(
+      storageKey('userData'),
+      JSON.stringify({ signed: true, username: name, answered: false }),
+    );
+    setData({ signed: true, username: name, answered: false });
   }, []);
 
   const signOut = useCallback(() => {
     setData({} as AuthState);
-    localStorage.removeItem(storageKey('user'));
+    localStorage.removeItem(storageKey('userData'));
   }, []);
 
   const value = React.useMemo(
     () => ({
       signed: data.signed,
       username: data.username,
+      answered: data.answered,
       signIn,
       signOut,
     }),
