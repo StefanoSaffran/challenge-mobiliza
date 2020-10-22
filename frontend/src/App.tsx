@@ -1,11 +1,19 @@
 import React from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Hello Mobiliza!</h1>
-    </div>
-  );
-}
+import { ThemeProvider } from 'styled-components';
+
+import theme from './styles/theme';
+import GlobalStyles from './styles/global';
+import Login from './pages/Login';
+// import AppProvider from './context';
+
+const App = () => (
+  <ThemeProvider theme={theme}>
+    {/* <AppProvider> */}
+    <Login />
+    <GlobalStyles />
+    {/* </AppProvider> */}
+  </ThemeProvider>
+);
 
 export default App;
