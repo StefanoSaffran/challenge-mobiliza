@@ -8,11 +8,13 @@ import { AnimatedContainer, Form, SignInButton } from './styles';
 import AuthLayout from '../_layouts/auth';
 
 import { Mobiliza } from '~/assets';
+import { useAuth } from '~/contexts/auth';
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState('');
 
   const { colors } = useTheme();
+  const { signIn } = useAuth();
 
   const inputRange = [0, 4];
   const outputRange = [colors.lightGrey, colors.primaryLight];
@@ -21,6 +23,12 @@ const Login: React.FC = () => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setUsername(e.target.value);
   };
+
+  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+    e.preventDefault();
+    signIn(username);
+  };
+
   return (
     <AuthLayout background={animateBackground(username.length)}>
       <AnimatedContainer
@@ -35,7 +43,7 @@ const Login: React.FC = () => {
 
         <h2>Hey there, its nice to see you here! Please, tell me your name.</h2>
 
-        <Form>
+        <Form onSubmit={handleFormSubmit}>
           <label htmlFor="name">
             <input
               type="text"
