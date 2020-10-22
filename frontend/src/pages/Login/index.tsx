@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import { useHistory } from 'react-router-dom';
 import { useTheme } from 'styled-components';
 import { transform } from 'framer-motion';
 
@@ -13,6 +14,7 @@ import { useAuth } from '~/contexts/auth';
 const Login: React.FC = () => {
   const [username, setUsername] = useState('');
 
+  const history = useHistory();
   const { colors } = useTheme();
   const { signIn } = useAuth();
 
@@ -27,6 +29,7 @@ const Login: React.FC = () => {
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     signIn(username);
+    history.push('/values');
   };
 
   return (
