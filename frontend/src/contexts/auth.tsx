@@ -8,18 +8,24 @@ import React, {
 
 import { storageKey } from '~/utils';
 
+type User = {
+  id?: string;
+  username: string;
+};
+
 export type AuthState = {
   signed: boolean;
-  username: string;
+  user: User;
   answered: boolean;
 };
 
 export type AuthContext = {
   signed: boolean;
-  username: string;
+  user: User;
   answered: boolean;
   signIn(name: string): void;
   signOut(): void;
+  addUserID(id: string): void;
 };
 
 const AuthContext = createContext<AuthContext | null>(null);
@@ -33,7 +39,10 @@ const AuthProvider = ({ children }: PropsWithChildren<unknown>) => {
 
       return {
         signed: userData.signed,
-        username: userData.username,
+        user: {
+          id: userData.user.id,
+          username: userData.user.username,
+        },
         answered: userData.answered,
       };
     }
@@ -44,9 +53,13 @@ const AuthProvider = ({ children }: PropsWithChildren<unknown>) => {
   const signIn = useCallback(name => {
     localStorage.setItem(
       storageKey('userData'),
-      JSON.stringify({ signed: true, username: name, answered: false }),
+      JSON.stringify({
+        signed: true,
+        user: { username: name },
+        answered: false,
+      }),
     );
-    setData({ signed: true, username: name, answered: false });
+    setData({ signed: true, user: { username: name }, answered: false });
   }, []);
 
   const signOut = useCallback(() => {
@@ -54,15 +67,31 @@ const AuthProvider = ({ children }: PropsWithChildren<unknown>) => {
     localStorage.removeItem(storageKey('userData'));
   }, []);
 
+  const addUserID = useCallback(
+    id => {
+      localStorage.setItem(
+        storageKey('userData'),
+        JSON.stringify({
+          signed: true,
+          user: { ...data.user, id },
+          answered: true,
+        }),
+      );
+      setData({ signed: true, user: { ...data.user, id }, answered: true });
+    },
+    [data.user],
+  );
+
   const value = React.useMemo(
     () => ({
       signed: data.signed,
-      username: data.username,
+      user: data.user,
       answered: data.answered,
       signIn,
       signOut,
+      addUserID,
     }),
-    [data, signIn, signOut],
+    [data, signIn, signOut, addUserID],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
