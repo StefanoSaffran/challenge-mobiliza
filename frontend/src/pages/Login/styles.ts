@@ -20,7 +20,7 @@ export const AnimatedContainer = styled(motion.main)`
       width: 15rem !important;
       height: auto !important;
 
-      fill: ${theme.colors.primaryDarker};
+      fill: ${theme.colors.primaryDark};
     }
 
     h2 {
@@ -68,7 +68,7 @@ export const SignInButton = styled(Button)`
     margin-top: 1.2rem;
     background-image: ${`linear-gradient(260deg,
       ${theme.colors.primaryLight},
-      ${theme.colors.primaryDarker},
+      ${theme.colors.primaryDark},
       ${theme.colors.primaryLight})
     `};
     background-size: 200% 100%;
@@ -79,7 +79,7 @@ export const SignInButton = styled(Button)`
     :disabled {
       background-image: ${`linear-gradient(260deg,
         ${theme.colors.primaryLight},
-        ${theme.colors.primaryDarker},
+        ${theme.colors.primaryDark},
         ${theme.colors.primaryLight})
       `};
     }
@@ -105,7 +105,7 @@ export const SignInButton = styled(Button)`
       background: ${`linear-gradient(260deg, ${lighten(
         0.04,
         theme.colors.primaryLight,
-      )} 0%, ${lighten(0.04, theme.colors.primaryDarker)} 100%)`};
+      )} 0%, ${lighten(0.04, theme.colors.primaryDark)} 100%)`};
       :before {
         opacity: 1;
       }

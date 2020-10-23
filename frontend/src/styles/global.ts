@@ -15,6 +15,14 @@ export default createGlobalStyle`
     @media (min-width: 1981px) {
       font-size: 80%;
     };
+
+    @media (max-width: 760px) {
+      font-size: 60%;
+    };
+
+    @media (max-width: 600px) {
+      font-size: 52.5%;
+    };
   }
 
   body {
@@ -38,7 +46,7 @@ export default createGlobalStyle`
   }
 
   body, input, button {
-    font: 1.6rem 'Nunito+Sans', 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font: 1.6rem 'Nunito Sans', 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     line-height: 1.48;
   }
 

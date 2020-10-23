@@ -3,6 +3,7 @@ import React from 'react';
 import { Container, AnimatedWrapper } from './styles';
 import DefaultLayout from '../_layouts/default';
 import { VALUES_ANIMATION } from './animations';
+import MainContent from './MainContent';
 
 const Values = () => {
   return (
@@ -14,7 +15,9 @@ const Values = () => {
           animate="mounted"
           exit="unMounted"
           transition={{ duration: 1.5 }}
-        />
+        >
+          <MainContent />
+        </AnimatedWrapper>
       </Container>
     </DefaultLayout>
   );

@@ -13,7 +13,7 @@ export const Container = styled.div`
 `;
 
 export const AnimatedWrapper = styled(motion.div)`
-  max-width: 113rem;
+  max-width: 80rem;
   width: 100%;
   display: flex;
 `;
