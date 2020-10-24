@@ -38,7 +38,7 @@ const Login: React.FC = () => {
         variants={ANIMATION}
         initial="unMounted"
         animate="mounted"
-        exit="unMounted"
+        exit="exit"
       >
         <h1>
           <Mobiliza />
@@ -51,6 +51,7 @@ const Login: React.FC = () => {
             <input
               type="text"
               name="name"
+              autoComplete="off"
               placeholder="Your name here"
               value={username}
               onChange={handleInputChange}

@@ -1,6 +1,11 @@
 import React from 'react';
 
-import { Route as ReactDOMRoute, Redirect, RouteProps } from 'react-router-dom';
+import {
+  Route as ReactDOMRoute,
+  Redirect,
+  RouteProps,
+  useLocation,
+} from 'react-router-dom';
 
 import { useAuth } from '~/contexts/auth';
 
@@ -9,15 +14,17 @@ export interface IRouteProps extends RouteProps {
   component: React.ComponentType;
 }
 
-const Route = ({
-  isPrivate = false,
-  component: Component,
-  ...rest
-}: IRouteProps) => {
+const Route = ({ component: Component, ...rest }: IRouteProps) => {
+  const location = useLocation();
+  const { pathname } = location;
   const { signed, answered } = useAuth();
 
   if (!signed) {
     return <Redirect to="/" />;
+  }
+
+  if (signed && answered && pathname !== '/leaderboard') {
+    return <Redirect to="/leaderboard" />;
   }
 
   return <ReactDOMRoute {...rest} render={() => <Component />} />;

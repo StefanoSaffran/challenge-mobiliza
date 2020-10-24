@@ -4,7 +4,7 @@ export const GRADIENT_ANIMATION = {
     height: '6.4rem',
     transition: {
       delay: 0.5,
-      duration: 1.8,
+      duration: 1.3,
       ease: 'easeInOut',
     },
   },

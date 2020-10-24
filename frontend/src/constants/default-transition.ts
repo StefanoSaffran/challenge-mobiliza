@@ -1,1 +1,1 @@
-export default { type: 'spring', mass: 2.5 };
+export default { type: 'spring', mass: 1.3 };
