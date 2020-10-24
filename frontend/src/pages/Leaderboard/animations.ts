@@ -1,4 +1,4 @@
-export const LEADERBORD_ANIMATION = {
+export const LEADERBOARD_ANIMATION = {
   unMounted: { opacity: 0 },
   mounted: {
     opacity: 1,
