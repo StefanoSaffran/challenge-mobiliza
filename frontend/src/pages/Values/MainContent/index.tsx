@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useCallback, useState } from 'react';
 
 import { FiCheck } from 'react-icons/fi';
+import { useHistory } from 'react-router-dom';
 
 import {
   AnimatedContainer,
@@ -24,6 +25,7 @@ type Values = {
 };
 
 const MainContent: React.FC = () => {
+  const history = useHistory();
   const { user, addUserID } = useAuth();
   const [selectedValues, setSelectedValues] = useState<Values>({} as Values);
 
@@ -41,6 +43,7 @@ const MainContent: React.FC = () => {
     let score = 100;
 
     const selected = Object.keys(selectedValues).length;
+    console.log(selected);
 
     if (selectedValues['expertise-na-gestao-de-projetos']) {
       score = 0;
@@ -70,6 +73,7 @@ const MainContent: React.FC = () => {
       });
 
       addUserID(data.id);
+      history.push('/rank');
     } catch {}
   }
 

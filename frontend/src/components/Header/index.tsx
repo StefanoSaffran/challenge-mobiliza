@@ -34,7 +34,7 @@ const Header: React.FC = () => {
         </AnimatedLeftNav>
 
         <AnimatedRightNav variants={NAVS_ANIMATION}>
-          {pathname === '/rank' && (
+          {pathname === '/leaderboard' && (
             <Button onClick={signOut} variant="primary">
               Try again
             </Button>
