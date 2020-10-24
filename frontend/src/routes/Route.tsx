@@ -23,8 +23,8 @@ const Route = ({ component: Component, ...rest }: IRouteProps) => {
     return <Redirect to="/" />;
   }
 
-  if (signed && answered && pathname !== '/rank') {
-    return <Redirect to="/rank" />;
+  if (signed && answered && pathname !== '/leaderboard') {
+    return <Redirect to="/leaderboard" />;
   }
 
   return <ReactDOMRoute {...rest} render={() => <Component />} />;
