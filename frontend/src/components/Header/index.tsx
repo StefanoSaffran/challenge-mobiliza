@@ -1,5 +1,7 @@
 import React, { memo } from 'react';
 
+import { useLocation } from 'react-router-dom';
+
 import { Mobiliza } from '../../assets';
 import Button from '../Button';
 import User from './User';
@@ -15,6 +17,8 @@ import {
 import { useAuth } from '~/contexts/auth';
 
 const Header: React.FC = () => {
+  const location = useLocation();
+  const { pathname } = location;
   const { signOut } = useAuth();
 
   return (
@@ -30,9 +34,11 @@ const Header: React.FC = () => {
         </AnimatedLeftNav>
 
         <AnimatedRightNav variants={NAVS_ANIMATION}>
-          <Button onClick={signOut} variant="primary">
-            Try again
-          </Button>
+          {pathname === '/rank' && (
+            <Button onClick={signOut} variant="primary">
+              Try again
+            </Button>
+          )}
           <User />
         </AnimatedRightNav>
       </Wrapper>
