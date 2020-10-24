@@ -12,7 +12,7 @@ import Route from './Route';
 
 import Login from '~/pages/Login';
 import Values from '~/pages/Values';
-import Rank from '~/pages/Rank';
+import Leaderboard from '~/pages/Leaderboard';
 
 const Routes = () => {
   const location = useLocation();
@@ -23,7 +23,7 @@ const Routes = () => {
       <Switch location={location} key={pathname}>
         <ReactDOMRoute path="/" exact component={Login} />
         <Route path="/values" component={Values} />
-        <Route path="/rank" component={Rank} />
+        <Route path="/leaderboard" component={Leaderboard} />
 
         <ReactDOMRoute render={() => <Redirect to="/" />} />
       </Switch>

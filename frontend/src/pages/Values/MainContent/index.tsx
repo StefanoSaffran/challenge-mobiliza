@@ -43,7 +43,6 @@ const MainContent: React.FC = () => {
     let score = 100;
 
     const selected = Object.keys(selectedValues).length;
-    console.log(selected);
 
     if (selectedValues['expertise-na-gestao-de-projetos']) {
       score = 0;
@@ -73,7 +72,7 @@ const MainContent: React.FC = () => {
       });
 
       addUserID(data.id);
-      history.push('/rank');
+      history.push('/leaderboard');
     } catch {}
   }
 
