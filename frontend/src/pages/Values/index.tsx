@@ -14,7 +14,7 @@ const Values = () => {
           initial="unMounted"
           animate="mounted"
           exit="unMounted"
-          transition={{ duration: 1.5 }}
+          transition={{ duration: 1 }}
         >
           <MainContent />
         </AnimatedWrapper>
