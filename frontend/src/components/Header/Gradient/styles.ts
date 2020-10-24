@@ -7,6 +7,7 @@ export const AnimatedContainer = styled(motion.aside)`
   align-self: flex-start;
   position: absolute;
   top: 100%;
+  z-index: 3;
   background: ${({ theme }) =>
     `linear-gradient(90deg, ${theme.colors.secondary} 0%, ${theme.colors.secondaryDark} 100%);`};
 `;
