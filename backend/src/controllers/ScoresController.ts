@@ -32,7 +32,12 @@ export default {
   async index(request: Request, response: Response): Promise<Response> {
     const scoreRepository = getRepository(Score);
 
-    const scores = await scoreRepository.find();
+    const scores = await scoreRepository.find({
+      order: {
+        score: 'DESC',
+        created_at: 'ASC',
+      },
+    });
 
     return response.json(scores);
   },
