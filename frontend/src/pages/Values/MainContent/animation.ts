@@ -1,5 +1,3 @@
-import { transitions } from 'polished';
-
 import { DEFAULT_TRANSITION } from '~/constants';
 
 export const CONTAINER_ANIMATION = {
