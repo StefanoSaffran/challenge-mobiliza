@@ -45,10 +45,4 @@ export const AnimatedRightNav = styled(motion.div)`
   justify-content: flex-end;
   align-items: center;
   flex: 1;
-
-  @media (max-width: 470px) {
-    > button {
-      display: none;
-    }
-  }
 `;
